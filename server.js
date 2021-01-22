@@ -1,0 +1,16 @@
+const express = require('express');
+const ejs = require('ejs');
+const bodyParser = require('body-parser');
+const mainPage = require('./routes/main');
+const errorPage = require('./routes/error')
+const app = express();
+
+app.set('view engine', ejs);
+app.use(express.static('public'));
+
+app.use(mainPage);
+app.use(errorPage);
+
+app.listen(3000, ()=> {
+    console.log('Server is running on port 3000.');
+});
